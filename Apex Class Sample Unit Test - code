@@ -1,0 +1,18 @@
+@isTest
+private class LaptopBookingHandlerTest {
+    @isTest
+    static void testSendEmailNotification() {
+        Laptop_Bookings__c testBooking = new Laptop_Bookings__c(
+            Email__c = 'testuser@example.com',
+            Name = 'Test User',
+            Amount__c = 1400,
+            core_type__c = 'Core i3',
+            Laptop_Names__c = 'Hp'
+        );        
+        insert testBooking;        
+        Test.startTest();
+        LaptopBookingHandler.sendEmailNotification(new List<Laptop_Bookings__c>{testBooking});
+        Test.stopTest();
+        // Assertions can be added here to check if the email was sent
+    }
+}
